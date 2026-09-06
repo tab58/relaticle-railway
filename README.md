@@ -1,7 +1,7 @@
 # relaticle-railway
 
 Wrapper image for running [Relaticle](https://github.com/Relaticle/relaticle) on Railway
-(or any host that terminates TLS at a proxy). Published as `ghcr.io/<owner>/relaticle-railway:<version>`.
+(or any host that terminates TLS at a proxy). Published as `ghcr.io/tab58/relaticle-railway:<version>`.
 
 ## What it fixes
 1. **Reverb client config at runtime.** Upstream bakes `VITE_REVERB_*` into the JS bundle at
