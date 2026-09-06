@@ -43,7 +43,7 @@ By deploying Relaticle on Railway, you are one step closer to supporting a compl
 ### After deploy
 
 1. Open the app URL and sign up. Email verification is off by default; set `REQUIRE_EMAIL_VERIFICATION=true` once `MAIL_*` is configured.
-2. **AI chat**: set `OLLAMA_API_KEY` + `OLLAMA_MODEL` (Ollama cloud, e.g. `glm-5.3-flash`) or `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` on the `relaticle` service. Workers pick them up by reference.
+2. **AI chat**: set `OLLAMA_API_KEY` + `OLLAMA_MODEL` (Ollama cloud, e.g. `glm-5.3-flash`) or `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` on the `relaticle` service, then redeploy `horizon` (workers copy referenced vars at boot; chat jobs 401 until restarted).
 3. **Google login**: create an OAuth client with redirect `https://<your-domain>/auth/callback/google`, set `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`.
 4. **Custom domain**: add it to `relaticle` with target port **8080**, then set `APP_URL` to it and redeploy `reverb`, `horizon` and `scheduler` (they copy `APP_URL` at boot; Reverb rejects websocket connections from any other origin until restarted).
 
