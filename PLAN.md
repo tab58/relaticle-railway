@@ -59,7 +59,7 @@ Check: one runnable test script `test.sh` in the repo that builds the image, run
 3. Delete the test project. `railway templates publish relaticle --readme-file TEMPLATE_README.md --description "The open source CRM built for people and AI-powered work."`.
 4. Re-run step 1–2 against the published template once more.
 
-## Phase 5 — Upstream (removes the wrapper eventually)
+## Phase 5 — Upstream ❌ not pursuing (decision 2026-09-06): keep the wrapper image indefinitely
 
 Open against Relaticle/relaticle, referencing their merged PR #256 (trust private-network proxies):
 1. `TRUSTED_PROXIES` env (comma list or `*`) merged into the hardcoded list in `bootstrap/app.php`. Tiny, likely accepted.
