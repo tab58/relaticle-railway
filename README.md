@@ -7,7 +7,9 @@ Wrapper image for running [Relaticle](https://github.com/Relaticle/relaticle) on
 1. **Reverb client config at runtime.** Upstream bakes `VITE_REVERB_*` into the JS bundle at
    image build, so realtime chat never connects from the stock image. This image builds with
    placeholders and `entrypoint.d/50-reverb-config.sh` injects `REVERB_APP_KEY/HOST/PORT/SCHEME`
-   on boot. Same env vars you already set for the server side.
+   on boot, then renames the chunk by content hash and patches `manifest.json` so a CDN
+   (Cloudflare caches `/build/assets/*` for a year) can't serve a bundle with a stale key.
+   Same env vars you already set for the server side.
 2. **Trusts Railway edge proxies** (`100.64.0.0/10`) so `X-Forwarded-Proto` is honoured and
    Livewire/passkey URLs are `https`.
 
