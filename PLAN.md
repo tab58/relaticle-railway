@@ -47,12 +47,12 @@ Check: one runnable test script `test.sh` in the repo that builds the image, run
    - Add healthcheck path `/up` on `relaticle`.
    - Confirm `reverb` source is the upstream image (or the wrapper; either works) with start command `php artisan reverb:start`, service domain on port 8080.
 
-## Phase 3 — Edit the existing template in place  (`railway templates create` from `successr-ai` fails: 20 unrelated services)
+## Phase 3 — Edit the existing template in place ✅ done (2026-09-06)  (`railway templates create` from `successr-ai` fails: 20 unrelated services)
 
 1. Railway → Templates → `relaticle` → Edit. Apply `TEMPLATE_SPEC.md` service by service (app image → `ghcr.io/tab58/relaticle-railway:3.5.6`, add `reverb`, generators for `APP_KEY`/`REVERB_*`, everything else `${{relaticle.X}}`, optional prompts, 8080 + `/up`).
 2. Save as draft (do not publish yet).
 
-## Phase 4 — Prove it, then publish
+## Phase 4 — Prove it, then publish ✅ verified: test project from published config passed full checklist
 
 1. Fresh project: `railway init -n relaticle-template-test` then `railway deploy -t relaticle` (deploys the current *published* version; for the draft use the editor's "Deploy" button). Touch nothing by hand.
 2. Checklist: `/` → 200; login page has no console errors; `echo-*.js` tail shows real key + reverb host; ws handshake to reverb with `Origin: https://<app domain>` → 101; horizon log shows jobs DONE; with an Ollama key set, one chat message round-trips.
